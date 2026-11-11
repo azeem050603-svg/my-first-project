@@ -1,6 +1,7 @@
 
 
-<!DOCTYPE html>
+
+            border-radius: 15x;<!DOCTYPE html>
 <html>
 <head>
     <tittle>My profile Card</tittle>
@@ -19,7 +20,6 @@ white;
             width: 300px;
             padding: 20x;
             margin; 100px auto;
-            border-radius: 15x;
             box-shadow: 0 4px 10px
 gray;            
     
@@ -70,3 +70,163 @@ button>
 ├── style.css
 ├── script.js
 └── profile.jpg
+
+        .brand { font-weight: 800; letter-spacing: .04em; }
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Abdul Azeem's personal portfolio website. Diploma in Computer Science and Engineering.">
+  <meta name="theme-color" content="#080808">
+  <title>Abdul Azeem | Portfolio</title>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --panel-2: #171717;
+      --gold: #d6ad55;
+      --gold-light: #f2d58c;
+      --text: #f5f1e8;
+      --muted: #aaa49a;
+      --line: rgba(214,173,85,.25);
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px);
+      background: rgba(8,8,8,.88); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .04em; }
+    .brand span { color: var(--gold); }
+    nav { display: flex; gap: 25px; color: var(--muted); font-size: .93rem; }
+    nav a:hover, .text-link:hover { color: var(--gold-light); }
+    .hero { min-height: 78vh; display: grid; align-items: center; padding: 90px 0 80px; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .22em; font-size: .78rem; font-weight: 700; }
+    h1 { font-size: clamp(3rem, 8vw, 6.3rem); line-height: 1.02; letter-spacing: -.055em; margin: 18px 0; }
+    h1 span { color: var(--gold); }
+    .intro { max-width: 650px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 6px; font-weight: 700; border: 1px solid var(--gold); }
+    .btn.primary { background: var(--gold); color: #17120a; }
+    .btn.secondary { color: var(--gold-light); }
+    .btn:hover { transform: translateY(-2px); }
+    section { padding: 76px 0; border-top: 1px solid rgba(255,255,255,.07); }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); margin: 8px 0 22px; letter-spacing: -.04em; }
+    .section-copy { max-width: 720px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .card { background: linear-gradient(145deg, var(--panel-2), var(--panel)); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+    .card h3 { margin: 0 0 8px; color: var(--gold-light); }
+    .card p { margin: 0; color: var(--muted); }
+    .tag { display: inline-block; border: 1px solid var(--line); color: var(--gold-light); padding: 5px 10px; border-radius: 99px; font-size: .82rem; margin: 5px 5px 0 0; }
+    .contact-panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      nav { width: 100%; gap: 16px; overflow-x: auto; padding-bottom: 3px; }
+      .hero { min-height: auto; padding: 80px 0; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home">ABDUL <span>AZEEM</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="eyebrow">Personal Portfolio</div>
+        <h1>Hi, I'm<br><span>Abdul Azeem.</span></h1>
+        <p class="intro">A Computer Science and Engineering diploma student, interested in technology, learning new skills, and building useful things for the web.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my work</a>
+          <a class="btn secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="eyebrow">A little about me</div>
+        <h2 class="section-title">Learning today. Building for tomorrow.</h2>
+        <p class="section-copy">I'm Abdul Azeem. I am pursuing a Diploma in Computer Science and Engineering. This portfolio is my space to share what I learn, highlight my projects, and keep growing as a developer.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="eyebrow">What I'm exploring</div>
+        <h2 class="section-title">Technology interests</h2>
+        <p class="section-copy">A growing list of topics to learn and practise. This section can be updated as your skills develop.</p>
+        <div>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">Computer Science</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="eyebrow">Selected work</div>
+        <h2 class="section-title">Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Personal Portfolio</h3>
+            <p>A responsive portfolio website created to introduce me and share my learning journey.</p>
+          </article>
+          <article class="card">
+            <h3>Learning Projects</h3>
+            <p>Small experiments and practice projects will be added here as I build them.</p>
+          </article>
+          <article class="card">
+            <h3>More coming soon</h3>
+            <p>This space will grow with new projects, ideas, and things I create.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2 class="section-title" style="margin-bottom:6px">Let's connect.</h2>
+            <p class="section-copy" style="margin:0">Find me on GitHub or connect with me about technology and projects.</p>
+          </div>
+          <a class="btn primary" href="https://github.com/azeem050603-svg" target="_blank" rel="noopener noreferrer">Visit my GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Abdul Azeem. Built with care.</div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
