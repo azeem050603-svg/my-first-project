@@ -1,18 +1,162 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Smart Calculator</title>
-<style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#e9edf5;font-family:Arial,sans-serif}.calc{width:min(340px,94vw);background:#172238;padding:20px;border-radius:20px;box-shadow:0 18px 40px #18243b35}.screen{width:100%;height:78px;border:0;border-radius:10px;margin-bottom:14px;padding:14px;text-align:right;font-size:30px;background:#f7f9fc;color:#172238}.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}button{height:58px;border:0;border-radius:10px;font-size:20px;background:#2b3b59;color:white;cursor:pointer}button:hover{filter:brightness(1.2)}.op{background:#b78b35}.equal{background:#2c8b68}.clear{background:#a94452}.hint{text-align:center;color:#c8d2e4;font-size:12px}
-</style></head><body><div class="calc"><input id="screen" class="screen" value="0" readonly aria-label="Calculator display"><div class="keys">
-<button class="clear" data-action="clear">AC</button><button data-action="delete">DEL</button><button data-value="(">(</button><button class="op" data-value="/">÷</button>
-<button data-value="7">7</button><button data-value="8">8</button><button data-value="9">9</button><button class="op" data-value="*">×</button>
-<button data-value="4">4</button><button data-value="5">5</button><button data-value="6">6</button><button class="op" data-value="-">−</button>
-<button data-value="1">1</button><button data-value="2">2</button><button data-value="3">3</button><button class="op" data-value="+">+</button>
-<button data-value="0">0</button><button data-value=".">.</button><button data-value=")">)</button><button class="equal" data-action="equals">=</button>
-</div><p class="hint">Keyboard supported · Basic arithmetic</p></div>
-<script>
-const screen=document.getElementById('screen');let expr='',done=false;
-function show(){screen.value=expr||'0'}
-function calculate(){if(!expr)return;try{if(!/^[0-9+*/().\s-]+$/.test(expr))throw Error();const result=Function('"use strict";return ('+expr+')')();if(!Number.isFinite(result))throw Error();expr=String(Number(result.toFixed(10)));done=true;show()}catch{screen.value='Error';expr='';done=true}}
-document.querySelector('.keys').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const a=b.dataset.action,v=b.dataset.value;if(a==='clear'){expr='';done=false;show()}else if(a==='delete'){expr=expr.slice(0,-1);done=false;show()}else if(a==='equals'){calculate()}else{if(done){expr='';done=false}expr+=v;show()}});
-document.addEventListener('keydown',e=>{if(/^[0-9+\-*/().]$/.test(e.key)){if(done){expr='';done=false}expr+=e.key;show()}else if(e.key==='Enter'){calculate()}else if(e.key==='Backspace'){expr=expr.slice(0,-1);show()}else if(e.key==='Escape'){expr='';show()}});
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Abdul Azeem's personal portfolio website. Completed Diploma in Computer Science and Engineering.">
+  <meta name="theme-color" content="#080808">
+  <title>Abdul Azeem | Portfolio</title>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --panel-2: #171717;
+      --gold: #d6ad55;
+      --gold-light: #f2d58c;
+      --text: #f5f1e8;
+      --muted: #aaa49a;
+      --line: rgba(214,173,85,.25);
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px);
+      background: rgba(8,8,8,.88); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .04em; }
+    .brand span { color: var(--gold); }
+    nav { display: flex; gap: 25px; color: var(--muted); font-size: .93rem; }
+    nav a:hover, .text-link:hover { color: var(--gold-light); }
+    .hero { min-height: 78vh; display: grid; align-items: center; padding: 90px 0 80px; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .22em; font-size: .78rem; font-weight: 700; }
+    h1 { font-size: clamp(3rem, 8vw, 6.3rem); line-height: 1.02; letter-spacing: -.055em; margin: 18px 0; }
+    h1 span { color: var(--gold); }
+    .intro { max-width: 650px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 6px; font-weight: 700; border: 1px solid var(--gold); }
+    .btn.primary { background: var(--gold); color: #17120a; }
+    .btn.secondary { color: var(--gold-light); }
+    .btn:hover { transform: translateY(-2px); }
+    section { padding: 76px 0; border-top: 1px solid rgba(255,255,255,.07); }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); margin: 8px 0 22px; letter-spacing: -.04em; }
+    .section-copy { max-width: 720px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .card { background: linear-gradient(145deg, var(--panel-2), var(--panel)); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+    .card h3 { margin: 0 0 8px; color: var(--gold-light); }
+    .card p { margin: 0; color: var(--muted); }
+    .tag { display: inline-block; border: 1px solid var(--line); color: var(--gold-light); padding: 5px 10px; border-radius: 99px; font-size: .82rem; margin: 5px 5px 0 0; }
+    .contact-panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      nav { width: 100%; gap: 16px; overflow-x: auto; padding-bottom: 3px; }
+      .hero { min-height: auto; padding: 80px 0; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home">ABDUL <span>AZEEM</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="eyebrow">Personal Portfolio</div>
+        <h1>Hi, I'm<br><span>Abdul Azeem.</span></h1>
+        <p class="intro">A Computer Science and Engineering diploma holder, interested in technology, learning new skills, and building useful things for the web.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my work</a>
+          <a class="btn secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="eyebrow">A little about me</div>
+        <h2 class="section-title">Learning today. Building for tomorrow.</h2>
+        <p class="section-copy">I'm Abdul Azeem. I have completed a Diploma in Computer Science and Engineering. This portfolio is my space to showcase my projects, skills, and growth as a developer.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="eyebrow">What I'm exploring</div>
+        <h2 class="section-title">Technology interests</h2>
+        <p class="section-copy">A growing list of topics to learn and practise. This section can be updated as your skills develop.</p>
+        <div>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">Computer Science</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="eyebrow">Selected work</div>
+        <h2 class="section-title">Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Smart Calculator</h3>
+            <p>A simple and responsive calculator built to perform everyday mathematical calculations.</p>
+            <p style="margin-top:16px"><a class="btn secondary" href="calculator.html">Open Calculator</a></p>
+          </article>
+          <article class="card">
+            <h3>Student Management System</h3>
+            <p>A project concept for managing student details and academic records in an organized way.</p>
+            <p style="margin-top:16px"><a class="btn secondary" href="student-management-system.html">View Project</a></p>
+          </article>
+          <article class="card">
+            <h3>Personal Portfolio</h3>
+            <p>A responsive website introducing me, my skills, and the projects I create.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2 class="section-title" style="margin-bottom:6px">Let's connect.</h2>
+            <p class="section-copy" style="margin:0">
+              Phone: <a class="text-link" href="tel:9118010552">9118010552</a><br>
+              Email: <a class="text-link" href="mailto:azeem050603@gmail.com">azeem050603@gmail.com</a>
+            </p>
+          </div>
+          <a class="btn primary" href="https://github.com/azeem050603-svg" target="_blank" rel="noopener noreferrer">Visit my GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Abdul Azeem. Built with care.</div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
