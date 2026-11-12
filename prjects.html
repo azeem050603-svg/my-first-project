@@ -4,46 +4,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Projects</title>
+<title>Luxury Projects | Faizan Ahmed</title>
 
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial;
-  background: #eef3ff;
-  text-align: center;
-  padding: 30px;
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #302713;
+}
+
+.logo {
+    color: #d4af37;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px 70px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.projects {
+    padding: 40px 8% 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
 }
 
 .card {
-  background: white;
-  padding: 25px;
-  margin: 20px auto;
-  max-width: 400px;
-  border-radius: 15px;
+    background: #141414;
+    border: 1px solid #332b19;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
 }
 
-a {
-  color: blue;
-  font-weight: bold;
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37;
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card h2 {
+    color: #d4af37;
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.tag {
+    display: inline-block;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 8px 15px;
+    margin-top: 18px;
+    font-size: 12px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    border-top: 1px solid #302713;
+}
+
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    nav a {
+        margin: 0 8px;
+        font-size: 13px;
+    }
+    .hero h1 {
+        font-size: 34px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h1>My Projects</h1>
+<header>
+    <div class="logo">FAIZAN AHMED</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+    </nav>
+</header>
 
-<div class="card">
-  <h2>My Portfolio</h2>
-  <a href="index.html">View Portfolio</a>
-</div>
+<section class="hero">
+    <h1>Luxury Dubai Projects</h1>
+    <p>Discover Premium Properties & Exceptional Living</p>
+</section>
 
-<div class="card">
-  <h2>Dubai Real Estate Website</h2>
-  <a href="Faizan_ahmed_dubai_real_estate.html">
-    View Project
-  </a>
-</div>
+<section class="projects">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="Luxury Villa">
+        <div class="card-content">
+            <h2>Luxury Villas</h2>
+            <p>Explore elegant villas with beautiful architecture and premium living spaces.</p>
+            <span class="tag">LUXURY LIVING</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800" alt="Modern Apartments">
+        <div class="card-content">
+            <h2>Modern Apartments</h2>
+            <p>Experience modern apartments with stylish interiors and stunning views.</p>
+            <span class="tag">MODERN DESIGN</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800" alt="Commercial Property">
+        <div class="card-content">
+            <h2>Commercial Spaces</h2>
+            <p>Discover premium commercial spaces for business and professional use.</p>
+            <span class="tag">BUSINESS SPACES</span>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Faizan Ahmed | Dubai Real Estate
+</footer>
 
 </body>
 </html>
